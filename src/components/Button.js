@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 
-function Button({ label, backgrondColor = "red", size = "md", onClick }) {
-  let scal = 1;
+function Button({ label, backgroundColor = "red", size = "md", handleClick }) {
+  let scale = 1;
   if (size === "sm") scale = 0.75;
   if (size === "lg") scale = 1.5;
   const style = {
@@ -10,17 +10,17 @@ function Button({ label, backgrondColor = "red", size = "md", onClick }) {
     border: "none",
   };
   return (
-    <button onClick={onClick} style={style}>
+    <button onClick={handleClick} style={style}>
       {label}
     </button>
   );
 }
 
-Button.prototype = {
+Button.propTypes = {
   label: PropTypes.string,
   backgroundColor: PropTypes.string,
   size: PropTypes.oneOf(["sm", "md", "lg"]),
-  onClick: PropTypes.func,
+  handleClick: PropTypes.func,
 };
 
 export default Button;
